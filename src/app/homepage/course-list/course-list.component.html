@@ -1,0 +1,18 @@
+    <!-- list of courses is nested inside of the md-5 column in the homepage component.
+       So it will only be as wide as that column despite it being  given a
+       col-xs-12 (full width) class on this course list component -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-info" (click)="onNewCourse()">New Course</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-course-item
+    *ngFor="let courseEl of courses; let i = index"
+    [course]="courseEl"
+    [index]="i"></app-course-item>
+  </div>
+</div>

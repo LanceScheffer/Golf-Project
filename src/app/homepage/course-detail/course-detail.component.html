@@ -1,0 +1,60 @@
+<!-- this component will be displayed on the right side of the dom -->
+<!-- this course detail component is nested inside of the div class="col-md-7"
+  inside the homepage component -->
+<div class="row">
+  <div class="col-xs-12">
+    <img
+      [src]="course.imagePath"
+      alt="{{ course.name }}"
+      class="img-responsive"
+      style="max-height: 340px;"
+      >
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ course.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div
+       class="btn-group"
+       appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary dropdown toggle">
+        Manage Course <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a style="cursor: pointer;" (click)="onEditCourse()">Edit Course</a></li>
+        <li><a style="cursor: pointer;" (click)="onDeleteCourse()">Delete Course</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{ course.location }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{ course.date }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{ course.par }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{ course.score }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+   {{ course.description }}
+  </div>
+</div>

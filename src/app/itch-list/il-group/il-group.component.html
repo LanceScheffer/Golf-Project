@@ -1,0 +1,15 @@
+<h4>Courses I want to play at one day.</h4>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewCourse()">New Course</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-il-item
+    *ngFor="let itchListCourseEl of itchListArray; let i = index"
+     [itchListCourse]="itchListCourseEl"
+     [index]="i"></app-il-item>
+  </div>
+</div>

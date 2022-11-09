@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default"
+     style="background-color: rgb(143, 203, 143);
+            font-size: medium;
+            ">
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a
+      class="navbar-left"
+      routerLink="/homepage"
+      >
+      <!-- The logo I create will go by the src element -->
+        <img
+            src="https://www.transparentpng.com/thumb/golf-ball/6tYTME-golf-ball-background.png"
+             width="25"
+             height="25"
+             style="margin-top: 12px;
+             "
+             alt="">
+        </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a routerLink="/homepage">Scrapbook</a></li>
+        <li routerLinkActive="active"><a routerLink="/homepage">Home</a></li>
+        <li routerLinkActive="active"><a routerLink="/itchlist">Bucket List</a></li>
+                <!-- change itchlist to bucketlist -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropdown>
+          <!-- //class "caret" adds the arrow indicating that it is a dropdown -->
+          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
+            <li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

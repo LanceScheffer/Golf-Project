@@ -1,0 +1,40 @@
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Course } from "../homepage/course.model";
+import { HomepageService } from "../homepage/homepage.service";
+import { ItchListService } from "../itch-list/itch-list.service";
+import { Itchlist } from "../itch-list/itch-list.model";
+
+@Injectable({providedIn: 'root'})
+export class DataStorageService {
+  constructor(private http: HttpClient,
+              private homepageService: HomepageService,
+              private itchListService: ItchListService) {}
+
+  storeData () {
+    const courses = this.homepageService.getCourses();
+    this.http.put(
+      'https://personal-project-scrapbook-default-rtdb.firebaseio.com/homepage.json',
+       courses).subscribe(response => {
+        console.log(response);
+       })
+
+    const ilCourses = this.itchListService.getIlCourses();
+    this.http.put(
+      'https://personal-project-scrapbook-default-rtdb.firebaseio.com/itch-list.json',
+      ilCourses).subscribe(response => {
+        console.log(response);
+      })
+  }
+
+  fetchData() {
+    this.http.get<Course[]>('https://personal-project-scrapbook-default-rtdb.firebaseio.com/homepage.json'
+    ).subscribe(courses => {
+      this.homepageService.setCourses(courses);
+    })
+    this.http.get<Itchlist[]>('https://personal-project-scrapbook-default-rtdb.firebaseio.com/itch-list.json'
+    ).subscribe(ilcourses => {
+      this.itchListService.setIlCourses(ilcourses);
+    })
+  }
+  }

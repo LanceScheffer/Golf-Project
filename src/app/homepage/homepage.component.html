@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-5">
+    <!-- course list is nested inside of this md-5 column so it will only be as wide
+    as this column despite it being  given a col-xs-12 (full width) class on the
+    course list html template -->
+    <app-course-list></app-course-list>
+  </div>
+  <div class="col-md-7">
+    <router-outlet></router-outlet>
+  </div>
+</div>

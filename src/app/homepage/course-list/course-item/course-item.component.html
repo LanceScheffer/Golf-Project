@@ -1,0 +1,23 @@
+<a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix"
+>
+<div class="pull-left">
+  <!-- string interpolation {{  }} allows us to output text anywhere in our template content -->
+  <h4 class="list-group-item-heading">{{ course.name }}</h4>
+  <p class="list-group-item-text">{{ course.date }}</p>
+  <!-- I might add more values like date above later such as: description, par, score -->
+</div>
+<span class="pull-right">
+  <img
+    src="{{ course.imagePath }}"
+    alt="{{ course.name }}"
+    class="img-responsive"
+    style="max-height: 50px;">
+    <!-- You could also use event binding on lines 13-14 instead of string interpolation
+    which would look like this: [src]="course.imagePath" -->
+  <!-- img-responsive is a bootstrap class that resizes the image automatically  -->
+</span>
+</a>
