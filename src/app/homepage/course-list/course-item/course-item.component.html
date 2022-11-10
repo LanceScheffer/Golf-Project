@@ -1,14 +1,19 @@
 <a
-  style="cursor: pointer;"
+  style="cursor: pointer;
+         background-color:rgb(231, 250, 232);
+  "
   [routerLink]="[index]"
   routerLinkActive="active"
   class="list-group-item clearfix"
 >
 <div class="pull-left">
-  <!-- string interpolation {{  }} allows us to output text anywhere in our template content -->
-  <h4 class="list-group-item-heading">{{ course.name }}</h4>
-  <p class="list-group-item-text">{{ course.date }}</p>
-  <!-- I might add more values like date above later such as: description, par, score -->
+  <!-- string interpolation {{  }} allows me to output text anywhere in our template content -->
+  <h4
+    class="list-group-item-heading"
+    style="font-family: Comic Sans MS;"
+    >{{ course.name }}</h4>
+  <p class="list-group-item-text" style="font-size: 1.1em;">{{ course.date }}</p>
+  <!-- I might add more values like date above later such as:  par or score -->
 </div>
 <span class="pull-right">
   <img
