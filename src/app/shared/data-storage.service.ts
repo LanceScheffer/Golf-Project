@@ -14,25 +14,25 @@ export class DataStorageService {
   storeData () {
     const courses = this.homepageService.getCourses();
     this.http.put(
-      'https://personal-project-scrapbook-default-rtdb.firebaseio.com/homepage.json',
+      'https://lance-golf-project-default-rtdb.firebaseio.com/homepage.json',
        courses).subscribe(response => {
         console.log(response);
        })
 
     const ilCourses = this.itchListService.getIlCourses();
     this.http.put(
-      'https://personal-project-scrapbook-default-rtdb.firebaseio.com/itch-list.json',
+      'https://lance-golf-project-default-rtdb.firebaseio.com/itch-list.json',
       ilCourses).subscribe(response => {
         console.log(response);
       })
   }
 
   fetchData() {
-    this.http.get<Course[]>('https://personal-project-scrapbook-default-rtdb.firebaseio.com/homepage.json'
+    this.http.get<Course[]>('https://lance-golf-project-default-rtdb.firebaseio.com/homepage.json'
     ).subscribe(courses => {
       this.homepageService.setCourses(courses);
     })
-    this.http.get<Itchlist[]>('https://personal-project-scrapbook-default-rtdb.firebaseio.com/itch-list.json'
+    this.http.get<Itchlist[]>('https://lance-golf-project-default-rtdb.firebaseio.com/itch-list.json'
     ).subscribe(ilcourses => {
       this.itchListService.setIlCourses(ilcourses);
     })

@@ -17,7 +17,7 @@ const routes: Routes = [
     { path: ':id', component: CourseDetailComponent },
     { path: ':id/edit', component: CourseEditComponent }
   ]},
-  { path: 'itchlist', component: ItchListComponent, children: [
+  { path: 'bucket-list', component: ItchListComponent, children: [
     { path: '', component: StartItchListComponent },
     { path: 'new', component: IlEditComponent },
     { path: ':id', component: IlDetailComponent },
