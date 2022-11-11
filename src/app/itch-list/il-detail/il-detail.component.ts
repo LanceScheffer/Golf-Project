@@ -34,6 +34,6 @@ export class IlDetailComponent implements OnInit {
 
   onDeleteCourse() {
     this.itchListService.deleteCourse(this.id);
-    this.router.navigate(['/itchlist'], {relativeTo: this.route});
+    this.router.navigate(['/bucket-list'], {relativeTo: this.route});
   }
 }
