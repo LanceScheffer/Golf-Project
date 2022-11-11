@@ -4,11 +4,6 @@
 
 export const environment = {
   production: false,
-  firebase: {
-    RootUrl: "https://lance-golf-project-default-rtdb.firebaseio.com/",
-    homepageUrl: "https://lance-golf-project-default-rtdb.firebaseio.com/homepage",
-    itchlistUrl: "https://lance-golf-project-default-rtdb.firebaseio.com/itch-list"
-  }
 };
 
 /*
