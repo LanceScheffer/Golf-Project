@@ -28,13 +28,20 @@ export class DataStorageService {
   }
 
   fetchData() {
+    console.log("hello");
+
     this.http.get<Course[]>('https://lance-golf-project-default-rtdb.firebaseio.com/homepage.json'
     ).subscribe(courses => {
+      console.log("courses:", courses);
+
       this.homepageService.setCourses(courses);
     })
     this.http.get<Itchlist[]>('https://lance-golf-project-default-rtdb.firebaseio.com/itch-list.json'
     ).subscribe(ilcourses => {
+      console.log("ilcourses:", ilcourses);
+
       this.itchListService.setIlCourses(ilcourses);
+
     })
   }
   }
