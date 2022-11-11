@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 html { background-color: rgb(246, 233, 216); }
-/* this code is only for playing with rgb. This color will
-end up going in app.component.ts line 12 */
-/* started with antique white */
+/* this code is only for playing with rgb. It would
+not allow me to do this on the app.component.ts This color will
+end up going in app.component.ts inside the ngAfterViewInit
+/* I started with antique white */
