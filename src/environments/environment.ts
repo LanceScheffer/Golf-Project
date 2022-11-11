@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    RootUrl: "https://lance-golf-project-default-rtdb.firebaseio.com/",
+    homepageUrl: "https://lance-golf-project-default-rtdb.firebaseio.com/homepage",
+    itchlistUrl: "https://lance-golf-project-default-rtdb.firebaseio.com/itch-list"
+  }
 };
 
 /*
