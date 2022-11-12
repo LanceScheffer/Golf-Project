@@ -12,8 +12,13 @@
     class="list-group-item-heading"
     style="font-family: Comic Sans MS;"
     >{{ course.name }}</h4>
-  <p class="list-group-item-text" style="font-size: 1.1em;">{{ course.date }}</p>
-  <!-- I might add more values like date above later such as:  par or score -->
+  <p
+    class="list-group-item-text"
+    style="font-size: 1.1em;
+          font-family: Comic Sans MS;
+          "
+    >{{ course.date }}&nbsp;&nbsp;&nbsp;{{ course.location }}
+  </p>
 </div>
 <span class="pull-right">
   <img
@@ -21,7 +26,7 @@
     alt="{{ course.name }}"
     class="img-responsive"
     style="max-height: 50px;">
-    <!-- You could also use event binding on lines 13-14 instead of string interpolation
+    <!-- You could also use event binding instead of string interpolation
     which would look like this: [src]="course.imagePath" -->
   <!-- img-responsive is a bootstrap class that resizes the image automatically  -->
 </span>
