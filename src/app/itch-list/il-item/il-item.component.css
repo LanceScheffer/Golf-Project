@@ -1,0 +1,22 @@
+a {
+  cursor: pointer;
+  background-color:rgb(231, 250, 232);
+}
+
+.item {
+  color: black !important;
+  background-color: rgb(157, 179, 240) !important;
+}
+
+.item p {
+  color: black !important;
+}
+
+h4 {
+  font-family: Comic Sans MS;
+}
+
+p {
+  font-size: 1.1em;
+  font-family: Comic Sans MS;
+}
