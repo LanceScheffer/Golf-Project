@@ -1,7 +1,4 @@
 <a
-  style="cursor: pointer;
-         background-color:rgb(231, 250, 232);
-  "
   [routerLink]="[index]"
   routerLinkActive="active item"
   class="list-group-item clearfix"
@@ -10,13 +7,9 @@
   <!-- string interpolation {{  }} allows me to output text anywhere in our template content -->
   <h4
     class="list-group-item-heading"
-    style="font-family: Comic Sans MS;"
     >{{ course.name }}</h4>
   <p
     class="list-group-item-text"
-    style="font-size: 1.1em;
-          font-family: Comic Sans MS;
-          "
     >{{ course.date }}&nbsp;&nbsp;&nbsp;{{ course.location }}
   </p>
 </div>

@@ -1,4 +1,6 @@
- /* .h2 {
-  color: rgb(46, 30, 224) !important;
-  font-family: fantasy !important;
-} */
+h1 {
+  color: darkgreen;
+  font-family: optima;
+  text-decoration: underline;
+
+}
