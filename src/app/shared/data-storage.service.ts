@@ -4,6 +4,7 @@ import { Course } from "../homepage/course.model";
 import { HomepageService } from "../homepage/homepage.service";
 import { ItchListService } from "../itch-list/itch-list.service";
 import { Itchlist } from "../itch-list/itch-list.model";
+import { tap } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
@@ -27,21 +28,26 @@ export class DataStorageService {
       })
   }
 
-  fetchData() {
-    console.log("hello");
+// fetching data from firebase database using NgOnInit. Upon Initialization fetchHomeData() is being called.
+  fetchHomeData(): any {
 
-    this.http.get<Course[]>('https://lance-golf-project-default-rtdb.firebaseio.com/homepage.json'
-    ).subscribe(courses => {
-      console.log("courses:", courses);
+    return this.http.get<Course[]>('https://lance-golf-project-default-rtdb.firebaseio.com/homepage.json'
+    ,{}).pipe(
+      tap((courses) => {
+        this.homepageService.setCourses(courses)
+      console.log("Home Courses:", courses);
+    }))
+  };
+// fetching data from firebase database using NgOnInit. Upon Initialization fetchBucketList() is being called.
+fetchBucketList() {
 
-      this.homepageService.setCourses(courses);
-    })
-    this.http.get<Itchlist[]>('https://lance-golf-project-default-rtdb.firebaseio.com/itch-list.json'
-    ).subscribe(ilcourses => {
-      console.log("ilcourses:", ilcourses);
+   return this.http.get<Itchlist[]>('https://lance-golf-project-default-rtdb.firebaseio.com/itch-list.json'
+   ,{}).pipe(
+     tap((ilCourses) => {
+       this.itchListService.setIlCourses(ilCourses);
+       console.log("Bucket List:", ilCourses);
 
-      this.itchListService.setIlCourses(ilcourses);
-
-    })
+     }) )
+    }
   }
-  }
+

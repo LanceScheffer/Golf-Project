@@ -20,13 +20,13 @@ export class CourseListComponent implements OnInit, OnDestroy {
               }
 
   ngOnInit(): void {
+    this.courses = this.homepageService.getCourses();
     this.subscription = this.homepageService.coursesChanged
       .subscribe(
         (courses:Course[]) => {
           this.courses = courses;
         }
       );
-    this.courses = this.homepageService.getCourses();
   }
 
   onNewCourse() {

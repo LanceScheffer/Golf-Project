@@ -1,6 +1,7 @@
 import { Subject } from "rxjs";
 import { Course } from "./course.model";
-
+import { Injectable } from "@angular/core";
+@Injectable({providedIn: 'root'})
 export class HomepageService{
   coursesChanged = new Subject<Course[]>();
   private coursesArray: Course[] = [];
