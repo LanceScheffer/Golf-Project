@@ -11,7 +11,6 @@ import { Itchlist } from './itch-list/itch-list.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
-  // I might need some sort of Input here?
   title = 'personal-project';
   // attaching a property to my Course Array and Bucket List array.
    homeCourses: Course[] = [];
@@ -30,24 +29,19 @@ export class AppComponent implements AfterViewInit {
         .body.style.backgroundColor = 'rgb(246, 233, 216)';
 };
 
+// Upon Initialization we use these methods from the dataStorageService to fetch our data.
   ngOnInit() {
-     this.dataStorageService.fetchData();
+     this.dataStorageService.fetchHomeData().subscribe();
+     this.dataStorageService.fetchBucketList().subscribe();
 
     this.homePageService.coursesChanged.subscribe((updatedCourseList: Course[]) => {
       this.homeCourses = updatedCourseList;
-      console.log(this.homeCourses);
-
     });
-
 
       this.itchListService.ilCoursesChanged.subscribe((bucketCourseList: Itchlist[]) => {
         this.akaBucketCourses = bucketCourseList;
+
     });
   };
 }
 
-// constructor(private elementRef: ElementRef) {}
-// ngAfterViewInit() {
-//     this.elementRef.nativeElement.ownerDocument
-//       .body.style.backgroundColor = 'black';
-// }

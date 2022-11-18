@@ -20,13 +20,13 @@ export class IlGroupComponent implements OnInit, OnDestroy {
                }
 
   ngOnInit(): void {
+    this.itchListArray = this.itchListService.getIlCourses();
     this.subscription = this.itchListService.ilCoursesChanged
       .subscribe(
         (itchListArray: Itchlist[]) => {
           this.itchListArray = itchListArray;
         }
       );
-    this.itchListArray = this.itchListService.getIlCourses();
   }
 
   onNewCourse() {
