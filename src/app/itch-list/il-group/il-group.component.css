@@ -4,13 +4,6 @@ h1 {
   text-decoration: underline;
 }
 
-#partners img, h1 {
-  display: inline;
-  float: none;
-  width: 80%;
-  margin-left: 2%;
-}
-
 button {
   font-family: cursive;
 }
