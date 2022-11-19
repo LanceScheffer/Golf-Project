@@ -2,5 +2,15 @@ h1 {
   color: darkgreen;
   font-family: optima;
   text-decoration: underline;
+}
 
+#partners img, h1 {
+  display: inline;
+  float: none;
+  width: 80%;
+  margin-left: 5%;
+}
+
+button {
+  font-family: cursive;
 }
