@@ -9,7 +9,7 @@ export class StartItchListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+
+  ngOnInit(): void { }
 
 }
