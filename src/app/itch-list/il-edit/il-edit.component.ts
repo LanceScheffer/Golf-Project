@@ -27,11 +27,6 @@ export class IlEditComponent implements OnInit {
   }
 
   onSubmit() {
-    // const newIlCourse = new Itchlist(
-    //   this.ilCourseForm.value['name'],
-    //   this.ilCourseForm.value['location'],
-    //   this.ilCourseForm.value['imagePath'],
-    //   this.ilCourseForm.value['description']);
     if (this.editMode) {
       this.itchListService.updateIlCourse(this.id, this.ilCourseForm.value)
     } else {

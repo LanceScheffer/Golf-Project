@@ -5,3 +5,7 @@ div {
 hr { display: block; height: 2px;
   border: 0; border-top: 2px solid #ccc;
   margin: .5em 0; padding: 0; }
+
+  ul {
+    background-color: rgb(208, 223, 237);
+  }
