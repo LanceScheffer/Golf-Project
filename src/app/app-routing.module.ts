@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './auth/auth.component';
 import { CourseDetailComponent } from './homepage/course-detail/course-detail.component';
 import { CourseEditComponent } from './homepage/course-edit/course-edit.component';
 import { HomepageStartComponent } from './homepage/homepage-start/homepage-start.component';
@@ -22,9 +23,8 @@ const routes: Routes = [
     { path: 'new', component: IlEditComponent },
     { path: ':id', component: IlDetailComponent },
     { path: ':id/edit', component: IlEditComponent }
-
-
   ]},
+  { path: 'auth', component: AuthComponent }
 ];
     // change itchlist to bucketlist
 @NgModule({

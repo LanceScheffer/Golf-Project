@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a
+      <a *ngIf="isAuthenticated"
       class="navbar-left"
       routerLink="/homepage"
       >
@@ -17,18 +17,32 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a routerLink="/homepage">Scrapbook</a></li>
-        <li routerLinkActive="active"><a routerLink="/homepage">Home</a></li>
-        <li routerLinkActive="active"><a routerLink="/bucket-list">Bucket List</a></li>
+        <li *ngIf="isAuthenticated"><a routerLink="/homepage">Scrapbook</a></li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
+          <a routerLink="/homepage">Home</a></li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
+          <a routerLink="/bucket-list">Bucket List</a></li>
                 <!-- I changed itchlist to bucketlist. I originally was looking for a different name besides bucket list, so I
                      went with a much worse name, "Itch List". That is why half the components are named itch list. -->
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
-          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Save New Courses<span class="caret"></span></a>
+        <li class="dropdown" appDropdown *ngIf="isAuthenticated">
+          <a style="cursor: pointer;" class="dropdown-toggle" role="button"
+            >Save New Courses<span class="caret"></span>
+          </a>
           <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;" (click)="onSaveData()">Save Courses</a></li>
+            <li>
+              <a style="cursor: pointer;" (click)="onSaveData()"
+              >Save Courses
+              </a>
+            </li>
           </ul>
+        </li>
+        <li routerLinkActive="active" *ngIf="!isAuthenticated">
+          <a routerLink="/auth">Authenticate</a></li>
+        <li *ngIf="isAuthenticated">
+          <a style="cursor: pointer;">Logout</a>
         </li>
       </ul>
     </div>

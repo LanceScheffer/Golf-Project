@@ -21,6 +21,8 @@ import { IlEditComponent } from './itch-list/il-edit/il-edit.component';
 import { HomepageService } from './homepage/homepage.service';
 import { ItchListService } from './itch-list/itch-list.service';
 import { DataStorageService } from './shared/data-storage.service';
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { DataStorageService } from './shared/data-storage.service';
     HomepageStartComponent,
     StartItchListComponent,
     CourseEditComponent,
-    IlEditComponent
+    IlEditComponent,
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
