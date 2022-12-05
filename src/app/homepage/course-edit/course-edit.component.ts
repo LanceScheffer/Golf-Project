@@ -33,6 +33,8 @@ export class CourseEditComponent implements OnInit {
     if (this.editMode) {
       this.homepageService.updateCourse(this.id, this.courseForm.value)
     } else {
+      console.log(this.courseForm.value);
+
       this.homepageService.addCourse(this.courseForm.value)
     }
     this.onCancel();

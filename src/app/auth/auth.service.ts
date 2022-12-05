@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Subject, tap } from "rxjs";
-import { throwError } from 'rxjs';
+import { Router } from "@angular/router";
+import { BehaviorSubject, catchError, tap, throwError } from "rxjs";
 import { User } from "./user.model";
 
 export interface AuthResponseData {
@@ -16,9 +16,10 @@ export interface AuthResponseData {
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
+  private tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   signup(email: string, password: string) {
     return this.http
@@ -66,6 +67,52 @@ export class AuthService {
                 })
           );
          }
+    // the snapshot that's being retrieved here in autoLogin is a string because we saved it as a string
+      //  below with JSON.stringify. In order to use as JavaScript object we convert it back with JSON.parse
+    // JSON.parse will take the string in JSON format and convert it back to a Javascript object.
+  autoLogin() {
+    const userData: {
+      email: string;
+      id: string;
+      _token: string;
+      _tokenExpirationDate: string;
+    } = JSON.parse(localStorage.getItem('userData'));
+    if (!userData) {
+      return;
+    }
+    const loadedUser = new User(
+      userData.email,
+      userData.id,
+      userData._token,
+      new Date(userData._tokenExpirationDate)
+      );
+
+      if (loadedUser.token) {
+        this.user.next(loadedUser);
+        const expiratiionDuration =
+         new Date(userData._tokenExpirationDate).getTime() -
+         new Date().getTime()
+        this.autoLogout(expiratiionDuration);
+      }
+  }
+
+
+  logout() {
+    this.user.next(null);
+    this.router.navigate(['/auth']);
+    localStorage.removeItem('userData');
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer)
+    }
+    this.tokenExpirationTimer = null;
+  }
+
+  autoLogout(expirationDuration: number) {
+    console.log(expirationDuration)
+   this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
+  }
 //This handleAuthentication() method allows us to store new user id
   private handleAuthentication(
     email: string,
@@ -76,6 +123,8 @@ export class AuthService {
     const expirationDate = new Date(new Date().getTime() + expiresIn *1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
+    this.autoLogout(expiresIn * 1000);
+    localStorage.setItem('userData', JSON.stringify(user));
 
   }
  //the hanleError() method handles authentication errors and displays appropriate response
